@@ -19,7 +19,6 @@ function App() {
 
     signOut(auth)
       .then(() => {
-
         //localStorage.clear();
         localStorage.removeItem('currentUser');
         localStorage.removeItem('isAuth');
