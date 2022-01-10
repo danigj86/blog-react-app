@@ -46,7 +46,7 @@ function App() {
         </nav>
         <Routes>
           <Route path='/login' element={<Login setIsAuth={setIsAuth} />} />
-          <Route path='/createpost' element={<CreatePost />} />
+          <Route path='/createpost' element={<CreatePost isAuth={isAuth}/>} />
           <Route path='/' element={<Home />} />
           <Route path='/*' element={<Home />} />
         </Routes>
