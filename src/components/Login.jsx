@@ -16,6 +16,7 @@ export const Login = ({ setIsAuth }) => {
                 console.log(result.user.auth.currentUser.uid);
                 console.log(auth.currentUser.displayName)
                 localStorage.setItem('isAuth', true);
+                localStorage.setItem('idUserPost', auth.currentUser.uid);
                 localStorage.setItem('currentUser', result.user.auth.currentUser.displayName);
                 setIsAuth(true);
                 navigate('/', {
@@ -30,7 +31,6 @@ export const Login = ({ setIsAuth }) => {
             <button className="login-with-google-btn" onClick={signInWithGoogle}>
                 Sign in with Google
             </button>
-            <p>lorem</p>
         </div>
     )
 }

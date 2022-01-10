@@ -22,6 +22,7 @@ function App() {
         //localStorage.clear();
         localStorage.removeItem('currentUser');
         localStorage.removeItem('isAuth');
+        localStorage.removeItem('idUserPost');
         setIsAuth(false);
         window.location.pathname = "/login";
       })
@@ -40,6 +41,7 @@ function App() {
 
           <span>
             {
+              //muestra nombre de usuario conectado
               isAuth && localStorage.getItem('currentUser')
             }
           </span>
@@ -47,8 +49,8 @@ function App() {
         <Routes>
           <Route path='/login' element={<Login setIsAuth={setIsAuth} />} />
           <Route path='/createpost' element={<CreatePost isAuth={isAuth}/>} />
-          <Route path='/' element={<Home />} />
-          <Route path='/*' element={<Home />} />
+          <Route path='/' element={<Home isAuth={isAuth}/>} />
+          <Route path='/*' element={<Home isAuth={isAuth}/>} />
         </Routes>
       </Router>
     );
