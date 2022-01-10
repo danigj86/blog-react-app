@@ -22,9 +22,7 @@ export const Login = ({ setIsAuth }) => {
                     replace: true
                 });
             });
-
     }
-
 
     return (
         <div className="loginPage">
@@ -32,6 +30,7 @@ export const Login = ({ setIsAuth }) => {
             <button className="login-with-google-btn" onClick={signInWithGoogle}>
                 Sign in with Google
             </button>
+            <p>lorem</p>
         </div>
     )
 }
