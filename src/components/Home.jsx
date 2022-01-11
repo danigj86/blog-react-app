@@ -57,6 +57,12 @@ export const Home = ({ isAuth }) => {
                                     </button>
                                 )}
                             </div>
+
+                            {
+                                post.author.img && (<>
+                                <img src={post.author.img}/>
+                                </>)
+                            }
                         </div>
                         <div className="postTextContainer">
                             {post.postText}
