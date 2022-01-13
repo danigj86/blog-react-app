@@ -39,12 +39,12 @@ function App() {
             !isAuth ? <Link to='/login'>Login</Link> : <button onClick={logOut}>Sign Out</button>
           }
 
-          <span>
+          
             {
               //muestra nombre de usuario conectado
-              isAuth && localStorage.getItem('currentUser')
+              isAuth ? <span> User: {localStorage.getItem('currentUser')}</span> : ''
             }
-          </span>
+          
         </nav>
         <Routes>
           <Route path='/login' element={<Login setIsAuth={setIsAuth} />} />

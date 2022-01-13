@@ -12,6 +12,7 @@ export const CreatePost = ({ isAuth }) => {
     const [title, setTitle] = useState('');
     const [postText, setPostText] = useState('');
     const [Imagen, setImagen] = useState();
+    const [progress, setProgress] = useState(0);
     let navigate = useNavigate();
 
     //referencia de la base de datos/coleccion de firestore
@@ -19,25 +20,31 @@ export const CreatePost = ({ isAuth }) => {
     const postCollectionRef = collection(db, 'posts');
 
     //===================================================
+    //GUARDA UN NUEVO POST
     const createPost = async (image) => {
 
-        uploadFile(image);
+        //recupera la URL guardada y quita los / del string
+        var yourString = JSON.stringify(localStorage.getItem('url'))
+        var urlImg = yourString.slice(1, -1);
+        //console.log('urllllllllll: ' + urlImg);
 
         if (!title || !postText) {
             alert('Rellena los campos');
             return;
         }
 
-        await addDoc(postCollectionRef, {
+        let nuevoDoc = {
             title,
             postText,
             author:
             {
                 name: auth.currentUser.displayName,
                 id: auth.currentUser.uid,
-                img: image.name
+                img: urlImg    //image.name
             }
-        });
+        }
+
+        await addDoc(postCollectionRef, nuevoDoc);
         navigate('/');
     };
     //====================================
@@ -47,13 +54,14 @@ export const CreatePost = ({ isAuth }) => {
         }
     }, [])
 
-     //=====================================
+    //=====================================
     //OBTENIENDO LA IMAGEN
     const changeImagen = (e) => {
         setImagen(e.target.files[0])
     }
-    
+
     //==========================================
+    //CARGA LA IMAGEN
     const uploadFile = (file) => {
 
         if (!file) {
@@ -65,12 +73,17 @@ export const CreatePost = ({ isAuth }) => {
 
         uploadTask.on('state_changed', (snapshot) => {
             const prog = Math.round(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            setProgress(prog);
         },
+
             (err) => { console.error(err) },
+            //consigo la Url de la imagen
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                    console.log(url);
+                    console.log('acabo de capturar la url: ' + url);
+                    //guardo la url en local storage para recuperarla despues
+                    localStorage.setItem('url', url);
                 })
             }
         )
@@ -96,12 +109,13 @@ export const CreatePost = ({ isAuth }) => {
                     <div className="content-modal">
                         <header>
                             <input type="file" name="imagen" onChange={changeImagen} />
-                            
+                            <button onClick={() => uploadFile(Imagen)}>Cargar imagen</button>
+                            <h4>Cargado: {progress}%</h4>
                         </header>
                     </div>
                 </aside>
                 <button
-                    onClick={()=>{createPost(Imagen)} } >Submit Post</button>
+                    onClick={() => { createPost(Imagen) }} >Submit Post</button>
             </div>
         </div>
     )

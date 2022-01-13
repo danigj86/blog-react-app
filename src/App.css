@@ -13,7 +13,7 @@ nav {
   height: 80px;
   background-color: black;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   color: white;
   text-decoration: none;
@@ -147,6 +147,7 @@ a {
 
 .postHeader .title {
   flex: 50%;
+  word-wrap: break-word;
 }
 .postHeader .deletePost {
   flex: 50%;
@@ -155,9 +156,11 @@ a {
   align-items: flex-end;
 }
 
+/* .btnDelete{
+  cursor: pointer;
+} */
 .deletePost button {
   border: none;
-
   background: none;
   font-size: 30px;
   cursor: pointer;
@@ -166,8 +169,18 @@ a {
 .post .postTextContainer {
   word-wrap: break-word;
   height: auto;
-  max-height: 400px;
+  max-height: 600px;
   width: 100%;
   overflow: hidden;
   overflow-y: auto;
+}
+.imgPost{
+  max-width: 500px;
+  
+  
+}
+.imgPost img{
+  width: 100%;
+  max-height:450px;
+ 
 }
