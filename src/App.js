@@ -30,7 +30,7 @@ function App() {
     return (
       <Router>
         <nav>
-          <Link to='/Home'>Home</Link>
+          <Link to='/Home'>Homee</Link>
           {
             isAuth && <Link to='/createpost'>Create Post</Link>
           }

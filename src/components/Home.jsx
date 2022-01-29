@@ -14,14 +14,14 @@ export const Home = ({ isAuth }) => {
     //recuperamos el ID del user conectado
     //console.log(localStorage.getItem('idUserPost'))
     //console.log(auth.currentUser);
-
+    const getPosts = async () => {
+        const data = await getDocs(postCollectionRef)
+        console.log(data.docs.map((doc) => ({ id: doc.id, ...doc.data()  })));
+        setPostList(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    };
     //Al cargar este componente, se cargan los post de la BD
     useEffect(() => {
-        const getPosts = async () => {
-            const data = await getDocs(postCollectionRef)
-            console.log(data.docs.map((doc) => ({ id: doc.id, ...doc.data()  })));
-            setPostList(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-        };
+        
         getPosts();
     },[]);
 
@@ -32,7 +32,8 @@ export const Home = ({ isAuth }) => {
         const postDoc = doc(db, 'posts', id)
         //y se borra con deleteDoc
         await deleteDoc(postDoc);
-        navigate('/');
+        //navigate('/createpost');
+        getPosts();
     }
     return (
         <div className="homePage">
@@ -40,13 +41,17 @@ export const Home = ({ isAuth }) => {
                 postList.map((post) => {
                     return <div className="post" key={post.id}>
                         <div className="postHeader">
+                            {
+                                //:::::::::   TITULO POST   ::::::::::::::
+                            }
                             <div className="title">
                                 <h2>{post.title}</h2>
                             </div>
 
                             <div className="deletePost">
 
-                                {//si el user esta conectado & el id.del creador del post === al id del user conectado.... se muestra el boton borrar
+                                {////:::::::::   BTN DETELE POST   ::::::::::::::
+                                //si el user esta conectado & el id.del creador del post === al id del user conectado.... se muestra el boton borrar
                                     isAuth && post.author.id === auth.currentUser.uid && (
                                         <button className="btnDelete"
                                             onClick={() => {
@@ -60,13 +65,16 @@ export const Home = ({ isAuth }) => {
                             </div>
 
                         </div>
-                        {
+                        
+                        {//:::::::::   IMAGEN POST  ::::::::::::::
                             post.author.img && (<>
                                 <div className='imgPost'>
                                     <img src={post.author.img} />
                                 </div>
                             </>)
                         }
+                          {//:::::::::   TEXTO POST   ::::::::::::::
+                          }
                         <div className="postTextContainer">
                             <p>
                                 {post.postText}
