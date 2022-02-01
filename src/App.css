@@ -5,22 +5,42 @@ body {
   padding: 0%;
   margin: 0%;
   font-family: Arial, Helvetica, sans-serif;
+  background-image: url('https://images.pexels.com/photos/843266/pexels-photo-843266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
-
+h2{
+  color: rgb(83, 78, 78);
+  color: #a58653;
+  font-size: 2.5em;
+  font-weight: bold;
+}
 nav {
   margin: 0;
   width: 100%;
   height: 80px;
-  background-color: black;
+  /* background-color: rgb(245, 245, 245); */
   display: flex;
   justify-content: space-around;
   align-items: center;
-  color: white;
+  color: rgb(105, 32, 223);
   text-decoration: none;
+  width: [object Object]px; 
+	height: [object Object]px; 
+	background: #F8F8F8; 
+	border: solid #BDBDBD 1px; 
+	box-shadow: 12px 5px 20px rgba(0, 0, 0, 0.5)  ; 
+	-webkit-box-shadow: 12px 5px 20px rgba(0, 0, 0, 0.5)  ; 
+	-moz-box-shadow: 12px 5px 20px rgba(0, 0, 0, 0.5)  ; 
+}
+nav span{
+  color: #917A55;
 }
 
 a {
-  color: white;
+  color: rgb(151, 134, 134);
   text-decoration: none;
   margin: 10px;
   font-size: 25px;
@@ -41,10 +61,27 @@ a {
   color: white;
   display: flex;
   flex-direction: column;
+  width: 90%;
+  max-width: 700px;
+  height: auto;
+  color: white;
+  background-color: rgb(250, 250, 250);
+  box-shadow: rgba(0, 0, 0, 0.842) 0px 3px 8px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(6px) saturate(144%);
+  -webkit-backdrop-filter: blur(6px) saturate(144%);
+  background-color: #db9da4d8;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
 }
+
 .cpContainer h2 {
   text-align: center;
+  color: white;
 }
+
 .cpContainer label {
   font-size: 25px;
 }
@@ -133,12 +170,22 @@ a {
   width: 90%;
   max-width: 700px;
   height: auto;
- 
+  color: white;
   background-color: rgb(250, 250, 250);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.842) 0px 3px 8px;
   margin: 20px;
   padding: 20px;
   border-radius: 15px;
+  backdrop-filter: blur(6px) saturate(144%);
+  -webkit-backdrop-filter: blur(6px) saturate(144%);
+  background-color: #db9da4d8;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.homePage .post p{
+  line-height: 1.7;
+  color: black;
 }
 
 .post .postHeader {
@@ -175,6 +222,10 @@ a {
   width: 100%;
   overflow: hidden;
   overflow-y: auto;
+}
+.postTextContainer h3 {
+  text-align: center;
+  color: #af7312;
 }
 .imgPost{
   max-width: 500px;

@@ -53,7 +53,7 @@ export const Home = ({ isAuth }) => {
                             post.author.img && (<>
                                 <div className='imgPost'>
                                     <img src={post.author.img} />
-                                </div>
+                                </div> <br /><br />
                             </>)
                         }
                         {//:::::::::   TEXTO POST   ::::::::::::::
