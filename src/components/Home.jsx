@@ -16,14 +16,14 @@ export const Home = ({ isAuth }) => {
     //console.log(auth.currentUser);
     const getPosts = async () => {
         const data = await getDocs(postCollectionRef)
-        console.log(data.docs.map((doc) => ({ id: doc.id, ...doc.data()  })));
+        console.log(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         setPostList(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     };
     //Al cargar este componente, se cargan los post de la BD
     useEffect(() => {
-        
+
         getPosts();
-    },[]);
+    }, []);
 
     //borrar un documento (un post en este caso)
     const deletePost = async (id) => {
@@ -47,25 +47,8 @@ export const Home = ({ isAuth }) => {
                             <div className="title">
                                 <h2>{post.title}</h2>
                             </div>
-
-                            <div className="deletePost">
-
-                                {////:::::::::   BTN DETELE POST   ::::::::::::::
-                                //si el user esta conectado & el id.del creador del post === al id del user conectado.... se muestra el boton borrar
-                                    isAuth && post.author.id === auth.currentUser.uid && (
-                                        <button className="btnDelete"
-                                            onClick={() => {
-                                                deletePost(post.id);
-                                            }}
-                                        >
-                                            {" "}
-                                            &#128465;
-                                        </button>
-                                    )}
-                            </div>
-
                         </div>
-                        
+
                         {//:::::::::   IMAGEN POST  ::::::::::::::
                             post.author.img && (<>
                                 <div className='imgPost'>
@@ -73,8 +56,8 @@ export const Home = ({ isAuth }) => {
                                 </div>
                             </>)
                         }
-                          {//:::::::::   TEXTO POST   ::::::::::::::
-                          }
+                        {//:::::::::   TEXTO POST   ::::::::::::::
+                        }
                         <div className="postTextContainer">
                             <p>
                                 {post.postText}

@@ -94,7 +94,7 @@ export const CreatePost = ({ isAuth }) => {
         <div className="createPostPage">
 
             <div className="cpContainer">
-                <h2>Create a Post</h2>
+                <h2>Create a Postt</h2>
                 <div className="inputGp">
                     <label htmlFor="">Title:</label>
                     <input type="text" placeholder="Title..."
@@ -105,15 +105,13 @@ export const CreatePost = ({ isAuth }) => {
                     <textarea placeholder="Post..."
                         onChange={(e) => setPostText(e.target.value)}></textarea>
                 </div>
-                <aside id="modal" className="modal">
-                    <div className="content-modal">
-                        <header>
-                            <input type="file" name="imagen" onChange={changeImagen} />
-                            <button onClick={() => uploadFile(Imagen)}>Cargar imagen</button>
-                            <h4>Cargado: {progress}%</h4>
-                        </header>
-                    </div>
-                </aside>
+                <div className="content-modall">
+                    <header>
+                        <input type="file" name="imagen" onChange={changeImagen} />
+                        <button onClick={() => uploadFile(Imagen)}>Cargar imagenn</button>
+                        <h4>Cargado: {progress}%</h4>
+                    </header>
+                </div>
                 <button
                     onClick={() => { createPost(Imagen) }} >Submit Post</button>
             </div>
