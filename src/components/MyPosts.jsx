@@ -36,13 +36,16 @@ export const MyPosts = ({ isAuth }) => {
 
     //:::::: DELETE POST :::::::::
     const deletePost = async (id) => {
-        //primero hacemos referencia al documento en concreto que deseamos
-        //borrar, especificando los tres parametros (configuracionDB, nombre DB, id del documento a borrar)
-        const postDoc = doc(db, 'posts', id)
-        //y se borra con deleteDoc
-        await deleteDoc(postDoc);
-        //navigate('/createpost');
-        getPosts();
+        if (window.confirm('¿Seguro que deseas borrar el post?')) {
+
+            //primero hacemos referencia al documento en concreto que deseamos
+            //borrar, especificando los tres parametros (configuracionDB, nombre DB, id del documento a borrar)
+            const postDoc = doc(db, 'posts', id)
+            //y se borra con deleteDoc
+            await deleteDoc(postDoc);
+            //navigate('/createpost');
+            getPosts();
+        }
     }
 
     useEffect(() => {
@@ -57,7 +60,7 @@ export const MyPosts = ({ isAuth }) => {
             <br /><br /><br />
             {
                 postList.map((post, index) => {
-                    return <div  key={post.id}>
+                    return <div key={post.id}>
                         {
                             isAuth && post.author.id === auth.currentUser.uid &&
                             <div className="post" key={post.id}>
@@ -81,13 +84,13 @@ export const MyPosts = ({ isAuth }) => {
                                     post.author.img && (<>
                                         <div className='imgPost'>
                                             <img src={post.author.img} />
-                                        </div>
+                                        </div> <br /><br />
                                         <div className="postTextContainer">
                                             <p>
                                                 {post.postText}
                                             </p>
                                             <h3>@{post.author.name}</h3>
-                                        </div><br /><br />
+                                        </div>
                                     </>)
                                 }
                             </div>
@@ -99,9 +102,11 @@ export const MyPosts = ({ isAuth }) => {
             }
             <div>
                 {
-                    loading == true ? <div className="spinner-grow" role="status">
+                    loading == true ? <div><div className="spinner-grow text-danger" role="status">
                         <span className="visually-hidden">Loading...</span>
-                    </div> : null
+                    </div><div className="spinner-grow text-danger" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div></div> : null
                 }
             </div>
             {

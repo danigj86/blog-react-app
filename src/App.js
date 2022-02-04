@@ -8,6 +8,7 @@ import { CreatePost } from "./components/CreatePost"
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
 import { MyPosts } from './components/MyPosts';
+import { Search } from './components/Search';
 
 
 function App() {
@@ -29,13 +30,16 @@ function App() {
     return (
       <Router>
         <nav>
-          <Link to='/Home'>Home (dev profile user posts)</Link>
+          <Link to='/Home'>Home</Link>
           {
-            isAuth && <Link to='/createpost'>Create Post</Link>
+            isAuth && <Link to='/createpost'>Añadir post</Link>
           }
 
           {
             isAuth && <Link to='/myposts'>Mis posts</Link>
+          }
+          {
+            isAuth && <Link to='/search'>Buscador</Link>
           }
 
           {
@@ -52,6 +56,7 @@ function App() {
         <Routes>
           <Route path='/login' element={<Login setIsAuth={setIsAuth} />} />
           <Route path='/createpost' element={<CreatePost isAuth={isAuth}/>} />
+          <Route path='/search' element={<Search isAuth={isAuth}/>} />
           <Route path='/myposts' element={<MyPosts isAuth={isAuth}/>} />
           <Route path='/' element={<Home isAuth={isAuth}/>} />
           <Route path='/*' element={<Home isAuth={isAuth}/>} />

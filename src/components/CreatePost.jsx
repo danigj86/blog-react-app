@@ -93,11 +93,11 @@ export const CreatePost = ({ isAuth }) => {
     return (
         <div className="createPostPage">
 
-            <div className="cpContainer">
-                <h2>Create a Postt</h2>
+            <div data-aos="zoom-in" className="cpContainer">
+                <h2>Crea un post</h2>
                 <div className="inputGp">
-                    <label htmlFor="">Title:</label>
-                    <input type="text" placeholder="Title..."
+                    <label htmlFor="">Título:</label>
+                    <input type="text" placeholder="Título..."
                         onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div className="inputGp">
@@ -107,13 +107,15 @@ export const CreatePost = ({ isAuth }) => {
                 </div>
                 <div className="content-modall">
                     <header>
-                        <input type="file" name="imagen" onChange={changeImagen} />
-                        <button onClick={() => uploadFile(Imagen)}>Cargar imagenn</button>
+                        <br />
+                        <input type="file" name="imagen" onChange={changeImagen} /><br />
+                        <button className='btn' onClick={() => uploadFile(Imagen)}>Cargar imagen</button>
+                        <br /><br />
                         <h4>Cargado: {progress}%</h4>
                     </header>
                 </div>
-                <button
-                    onClick={() => { createPost(Imagen) }} >Submit Post</button>
+                <button className='btn'
+                    onClick={() => { createPost(Imagen) }} >Enviar post!</button>
             </div>
         </div>
     )

@@ -1,3 +1,14 @@
+
+:root{
+  --main: rgba(29, 109, 141, 0.562);
+  --dark: #20241ef6;
+  --dark-light: #3f4647;
+  --white-light: #c8c8c8;
+  --white: white;
+  --shadow: 00 15px rgba(85, 34, 34, 0.25);
+  scroll-behavior: smooth;
+}
+
 .App {
   text-align: center;
 }
@@ -5,7 +16,7 @@ body {
   padding: 0%;
   margin: 0%;
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url('https://images.pexels.com/photos/843266/pexels-photo-843266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-image: url('https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/itCjTBE/blue-abstract-moving-flowing-waves-on-white-background-blurred-smooth-design-video-animation-ultra-hd-4k-3840x2160_rffdhgnp_thumbnail-1080_01.png');
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -13,7 +24,7 @@ body {
 }
 h2{
   color: rgb(83, 78, 78);
-  color: #a58653;
+  color: var(--main);
   font-size: 2.5em;
   font-weight: bold;
 }
@@ -29,18 +40,18 @@ nav {
   text-decoration: none;
   width: [object Object]px; 
 	height: [object Object]px; 
-	background: #F8F8F8; 
+	background: #ffffff; 
 	border: solid #BDBDBD 1px; 
 	box-shadow: 12px 5px 20px rgba(0, 0, 0, 0.5)  ; 
 	-webkit-box-shadow: 12px 5px 20px rgba(0, 0, 0, 0.5)  ; 
 	-moz-box-shadow: 12px 5px 20px rgba(0, 0, 0, 0.5)  ; 
 }
 nav span{
-  color: #917A55;
+  color: #2abeb2;
 }
 
 a {
-  color: rgb(151, 134, 134);
+  color: var(--main);
   text-decoration: none;
   margin: 10px;
   font-size: 25px;
@@ -64,22 +75,21 @@ a {
   width: 90%;
   max-width: 700px;
   height: auto;
-  color: white;
-  background-color: rgb(250, 250, 250);
+  color: var(--main);
   box-shadow: rgba(0, 0, 0, 0.842) 0px 3px 8px;
   margin: 20px;
   padding: 20px;
   border-radius: 15px;
   backdrop-filter: blur(6px) saturate(144%);
-  -webkit-backdrop-filter: blur(6px) saturate(144%);
-  background-color: #db9da4d8;
+  -webkit-backdrop-filter: blur(1px) saturate(144%);
+  background-color: #ffffff42;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
 .cpContainer h2 {
   text-align: center;
-  color: white;
+  color: var(--main);
 }
 
 .cpContainer label {
@@ -104,8 +114,6 @@ a {
   cursor: pointer;
   font-size: 18px;
 }
-
-
 
 .loginPage {
   width: 100vw;
@@ -164,6 +172,7 @@ a {
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
+  /* background-color: yellow; */
 }
 
 .homePage .post {
@@ -172,15 +181,15 @@ a {
   height: auto;
   color: white;
   background-color: rgb(250, 250, 250);
-  box-shadow: rgba(0, 0, 0, 0.842) 0px 3px 8px;
+  box-shadow: rgba(32, 34, 34, 0.664) 0px 6px 15px;
   margin: 20px;
   padding: 20px;
   border-radius: 15px;
   backdrop-filter: blur(6px) saturate(144%);
-  -webkit-backdrop-filter: blur(6px) saturate(144%);
-  background-color: #db9da4d8;
+  -webkit-backdrop-filter: blur(1px) saturate(144%);
+  background-color: #ffffff13;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  border: 1px solid rgba(0, 110, 255, 0.445);
 }
 
 .homePage .post p{
@@ -225,7 +234,7 @@ a {
 }
 .postTextContainer h3 {
   text-align: center;
-  color: #af7312;
+  color: var(--main);
 }
 .imgPost{
   max-width: 500px;
@@ -236,4 +245,23 @@ a {
   width: 100%;
   max-height:450px;
  
+}
+
+.search-form{
+   width: 100%;
+}
+
+.search-form::placeholder{
+  color: rgba(100, 92, 92, 0.466);
+}
+.btn{
+  border: 1px solid transparent;
+  background-color: var(--main);
+  cursor: pointer;
+  color: white;
+}
+.btn:hover{
+  border: 1px solid var(--main);
+  background-color:transparent;
+  color: var(--main);
 }
