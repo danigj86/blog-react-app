@@ -38,10 +38,12 @@ export const Home = ({ isAuth }) => {
     return (
         <div className="homePage">
 
-            <h2>React Blog App</h2>
-            <br />
-            <h3>Aplicación construida con React + Fire Base</h3>
-            <h4>Loguéate facilmente con Google, busca, gestiona y publica posts interesantes!</h4>
+            <div className="home-text">
+                <h2>React Blog App</h2>
+                <br />
+                <h3>Aplicación construida con React + Fire Base</h3>
+                <h4>Loguéate facilmente con Google, busca, gestiona y publica posts interesantes!</h4>
+            </div>
             {
                 postList.map((post) => {
                     return <div data-aos="zoom-in" className="post" key={post.id}>
