@@ -41,8 +41,8 @@ export const Home = ({ isAuth }) => {
             <div className="home-text">
                 <h2>React Blog App</h2>
                 <br />
-                <h3>Aplicación construida con React + Fire Base</h3>
-                <h4>Loguéate con Google, busca, gestiona y publica posts interesantes!</h4>
+                <h3>Aplicación construida con React + FireBase</h3>
+                <h4>Loguéate facilmente con Google, busca, gestiona y publica posts interesantes!</h4>
             </div>
             {
                 postList.map((post) => {
