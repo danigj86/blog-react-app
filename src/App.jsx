@@ -9,7 +9,9 @@ import { signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
 import { MyPosts } from './components/MyPosts';
 import { Search } from './components/Search';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init();
 
 function App() {
 

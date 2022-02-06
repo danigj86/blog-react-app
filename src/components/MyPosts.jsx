@@ -5,21 +5,10 @@ import { auth, db } from '../firebase-config';
 
 export const MyPosts = ({ isAuth }) => {
 
-
-
-    /* ((!loading) && ((postList.filter((post) => auth.currentUser.uid === post.author.id).length > 0))) ??
-    <>
-
-        <div>Aún no has escrito ningun post</div>
-
-    </> */
-
-
     const [postList, setPostList] = useState([]);
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
-
-
+    //const navigate = useNavigate();
+    
     //::::: GET POST :::::::::::
 
     //creamos la referencia de la base de datos para recuperar los posts

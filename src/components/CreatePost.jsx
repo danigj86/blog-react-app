@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ref, uploadBytesResumable } from '@firebase/storage';
-import { useEffect, useState } from 'react/cjs/react.development'
 import { addDoc, collection } from 'firebase/firestore';
 import { auth, db, storage } from '../firebase-config';
 import { useNavigate } from 'react-router-dom';
@@ -108,7 +107,7 @@ export const CreatePost = ({ isAuth }) => {
                 <div className="content-modall">
                     <header>
                         <br />
-                        <input type="file" name="imagen" onChange={changeImagen} /><br />
+                        <input class="custom-file-upload" type="file" name="imagen" onChange={changeImagen} /><br />
                         <button className='btn' onClick={() => uploadFile(Imagen)}>Cargar imagen</button>
                         <br /><br />
                         <h4>Cargado: {progress}%</h4>

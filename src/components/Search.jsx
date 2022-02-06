@@ -12,6 +12,7 @@ export const Search = () => {
     const [postList, setPostList] = useState([]);
     const navigate = useNavigate();
 
+    
     const searchPostList = postList.filter(post => post.title.toLocaleLowerCase().includes(searchText));
 
     console.log('Este es mi searchPostList: ');
@@ -35,6 +36,7 @@ export const Search = () => {
             <div className="search-area">
                 <h2>Escribe lo que busques:</h2>
                 <br /><br />
+
                 <form action="" className="search-form">
                     <input type="text" 
                     className="search-form"
@@ -42,6 +44,7 @@ export const Search = () => {
                     onChange={(e) =>(setSearchText(e.target.value))}
                     />
                 </form>
+                
             </div><br /><br />
 
             {
