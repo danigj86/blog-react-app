@@ -12,23 +12,37 @@ export const Search = () => {
     const [postList, setPostList] = useState([]);
     const navigate = useNavigate();
 
-    
-    const searchPostList = postList.filter(post => post.title.toLocaleLowerCase().includes(searchText));
+    //buscador
+    let searchPostList = postList.filter(post => post.title.toLocaleLowerCase().includes(searchText));
 
     console.log('Este es mi searchPostList: ');
     console.log(searchPostList);
-   
+
     const postCollectionRef = collection(db, 'posts');
     const getPosts = async () => {
         const data = await getDocs(postCollectionRef)
         console.log(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         setPostList(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     };
-   
+
     useEffect(() => {
 
         getPosts();
     }, []);
+
+    //::::::::::::::::
+    const handleSearch = (e) => {
+        e.preventDefault();
+
+        if (searchText === '') {
+            alert('Introduce un elemento a buscar')
+            return false;
+        }
+        alert('lo has buscado');
+        searchPostList = postList.filter(post => post.title.toLocaleLowerCase().includes(searchText));
+        console.log('datos del buscador:')
+        return searchPostList;
+    }
 
     return (
         <div className="homePage">
@@ -37,14 +51,14 @@ export const Search = () => {
                 <h2>Escribe lo que busques:</h2>
                 <br /><br />
 
-                <form action="" className="search-form">
-                    <input type="text" 
-                    className="search-form"
-                    placeholder="Turismo..."
-                    onChange={(e) =>(setSearchText(e.target.value))}
-                    />
+                <form onSubmit={handleSearch} className="search-form">
+                    <input type="text"
+                        className="search-form"
+                        placeholder="Turismo..."
+                        onChange={(e) => (setSearchText(e.target.value))} />
                 </form>
-                
+                <button onClick={handleSearch} className='btn btn-outline-dark mt-3' type="submit">Buscar...</button>
+
             </div><br /><br />
 
             {
