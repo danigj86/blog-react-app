@@ -27,6 +27,7 @@ export const Login = ({ setIsAuth }) => {
 
     return (
         <div className="loginPage">
+            <p>Sign in with email&password here</p>
             <p>Sign In With Google to Continue</p>
             <button className="login-with-google-btn" onClick={signInWithGoogle}>
                 Sign in with Google
