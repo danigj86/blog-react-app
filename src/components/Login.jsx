@@ -3,6 +3,7 @@ import React from 'react'
 import { auth, provider } from '../firebase-config'
 import { signInWithPopup } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
+import { Auth } from './Auth'
 
 export const Login = ({ setIsAuth }) => {
 
@@ -27,8 +28,8 @@ export const Login = ({ setIsAuth }) => {
 
     return (
         <div className="loginPage">
-            <p>Sign in with email&password here</p>
-            <p>Sign In With Google to Continue</p>
+            <Auth />
+            <br />
             <button className="login-with-google-btn" onClick={signInWithGoogle}>
                 Sign in with Google
             </button>
