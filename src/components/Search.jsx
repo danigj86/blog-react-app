@@ -13,7 +13,7 @@ export const Search = () => {
     const navigate = useNavigate();
 
     //buscador
-    let searchPostList = postList.filter(post => post.title.toLocaleLowerCase().includes(searchText));
+    let searchPostList = postList.filter(post => post.title.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()));
 
     console.log('Este es mi searchPostList: ');
     console.log(searchPostList);

@@ -10,18 +10,18 @@ import { auth } from "./firebase-config";
 import { MyPosts } from './components/MyPosts';
 import { Search } from './components/Search';
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 AOS.init();
 
 function App() {
-
+  //toogle para mobile menu
   const [show, setShow] = useState(false);
   console.log(show);
 
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
 
+  //::::--- LOG OUT USER ---::::
   const logOut = () => {
-
     signOut(auth)
       .then(() => {
         //localStorage.clear();
@@ -49,13 +49,13 @@ function App() {
           }
 
           {
-            !isAuth ? <Link to='/login' onClick={() => setShow(!show)}>Login</Link> : <button onClick={logOut}>Sign Out</button>
+            !isAuth ? <Link to='/login' onClick={() => setShow(!show)}>Login</Link> : <p className='signOut-btn' onClick={logOut}>Sign Out</p>
           }
 
 
           {
-            //muestra nombre de usuario conectado
-            isAuth ? <span> User: {localStorage.getItem('currentUser')}</span> : ''
+            //muestra nombre de usuario conectado  //localStorage.getItem('currentUser')
+            isAuth ? <span> User: {auth.currentUser.displayName}</span> : ''
           }
         </div>
 
@@ -63,7 +63,7 @@ function App() {
           onClick={() => setShow(!show)}
           className={show ? 'fas fa-times' : 'fas fa-bars'} >
         </div>
-        
+
       </nav>
       <Routes>
         <Route path='/login' element={<Login setIsAuth={setIsAuth} />} />

@@ -47,7 +47,11 @@ nav {
 	-moz-box-shadow: 12px 5px 20px rgba(0, 0, 0, 0.5)  ; 
 }
 nav span{
-  color: #2abeb2;
+  color: #3c3d3d;
+  font-style: italic;
+  border-left: 1px solid grey;
+  padding-left:5px;
+ 
 }
 
 a {
@@ -55,6 +59,17 @@ a {
   text-decoration: none;
   margin: 10px;
   font-size: 25px;
+}
+.signOut-btn{
+  display: inline-block;
+  color: #2abeb2;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 15px;
+  transition: all .5s ease;
+}
+.signOut-btn:hover{
+  color: black;
 }
 .createPostPage {
   width: 90%;
@@ -121,6 +136,8 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 50px;
+
 }
 
 .loginPage p {
@@ -354,13 +371,16 @@ button:hover {
 }
 
 .error {
+  text-align: center;
   background-color: tomato;
   color: white;
   border-radius: 6px;
-  padding: 6px 12px;
   font-weight: bold;
   max-width: 400px;
   margin-bottom: 20px;
+}
+.error p {
+  font-size: 5px !important;
 }
 
 /* RESPONSIVE */
@@ -390,7 +410,7 @@ button:hover {
     width: [object Object]px; 
   	height: [object Object]px; 
 	  background: #ffffff; 
-	  border: solid #BDBDBD 1px; 
+	  border-bottom: solid #BDBDBD 1px; 
 	  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5)  ; 
 	  -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5)  ; 
 	  -moz-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5)  ; 

@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
 
-export const Auth = () => {
+export const Auth = ({setIsAuth}) => {
 
     const [index, setIndex] = useState(true);
 
     return <div className="container">
 
-        {index ? <SignIn /> : <SignUp />}
+        {index ? <SignIn setIsAuth={setIsAuth}/> : <SignUp setIsAuth={setIsAuth}/>}
 
         <p onClick={() => setIndex(!index)}>
-            {index ? 'New user? Click here' : 'Already have an account?'}
+            {index ? '¿Acabas de llegar? Pincha aquí' : '¿Ya tienes una cuenta?'}
         </p>
 
 
