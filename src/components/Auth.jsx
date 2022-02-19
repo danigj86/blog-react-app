@@ -11,7 +11,7 @@ export const Auth = ({setIsAuth}) => {
         {index ? <SignIn setIsAuth={setIsAuth}/> : <SignUp setIsAuth={setIsAuth}/>}
 
         <p onClick={() => setIndex(!index)}>
-            {index ? '¿Acabas de llegar? Pincha aquí' : '¿Ya tienes una cuenta?'}
+            {index ? '¿Acabas de llegar? Regístrate' : '¿Ya tienes una cuenta?'}
         </p>
 
 

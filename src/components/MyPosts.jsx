@@ -8,7 +8,7 @@ export const MyPosts = ({ isAuth }) => {
     const [postList, setPostList] = useState([]);
     const [loading, setLoading] = useState(false);
     //const navigate = useNavigate();
-    
+
     //::::: GET POST :::::::::::
 
     //creamos la referencia de la base de datos para recuperar los posts
@@ -26,7 +26,6 @@ export const MyPosts = ({ isAuth }) => {
     //:::::: DELETE POST :::::::::
     const deletePost = async (id) => {
         if (window.confirm('¿Seguro que deseas borrar el post?')) {
-
             //primero hacemos referencia al documento en concreto que deseamos
             //borrar, especificando los tres parametros (configuracionDB, nombre DB, id del documento a borrar)
             const postDoc = doc(db, 'posts', id)
@@ -58,12 +57,13 @@ export const MyPosts = ({ isAuth }) => {
                                     <div className="title">
                                         <h2>{post.title}</h2>
                                     </div>
+                                    {//:::::::  DELETE POST  ::::::::::}
+                                    }
                                     <div className="deletePost">
                                         <button className="btnDelete"
                                             onClick={() => {
                                                 deletePost(post.id);
-                                            }}
-                                        >
+                                            }}>
                                             {" "}
                                             &#128465;
                                         </button>
@@ -100,10 +100,6 @@ export const MyPosts = ({ isAuth }) => {
             </div>
             {
                 !loading & postList.filter((post) => auth.currentUser.uid === post.author.id).length == 0 ? <div>Aún no has compartido ningún post. ¡Comparte una noticia con la comunidad!</div> : null
-
-
-
-
 
             }
         </div>)

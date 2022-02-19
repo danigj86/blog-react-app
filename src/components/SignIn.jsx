@@ -13,14 +13,13 @@ export const SignIn = ({ setIsAuth }) => {
     const emailRef = useRef();
     const passwordRef = useRef();
 
-    const [ error, setError ] = useState("")
-    const [ errorMsg, setErrorMsg ] = useState("")
-
-/*     if (error === 'auth/user-not-found'){
-        setErrorMsg('Usuario no encontrado')
-    }else if(error === 'auth/wrong-password'){
-        setErrorMsg('Password incorrecto')
-    } */
+    const [error, setError] = useState("")
+  
+    /*     if (error === 'auth/user-not-found'){
+            setErrorMsg('Usuario no encontrado')
+        }else if(error === 'auth/wrong-password'){
+            setErrorMsg('Password incorrecto')
+        } */
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -36,16 +35,17 @@ export const SignIn = ({ setIsAuth }) => {
                 console.log(user);
                 setIsAuth(true);
                 localStorage.setItem('currentUser', auth.currentUser.displayName);
+                localStorage.setItem('idUserPost', auth.currentUser.uid);
                 navigate('/');
 
             } catch (err) {
                 setError(err.code)
             }
 
-           /*  setIsAuth(true);
-            navigate('/', {
-                replace: true
-            }); */
+            /*  setIsAuth(true);
+             navigate('/', {
+                 replace: true
+             }); */
         } else {
             alert("Introducuce tus datos");
         }
@@ -65,7 +65,7 @@ export const SignIn = ({ setIsAuth }) => {
 
     return <div className="form">
         <h2>Login</h2>
-        
+
         <form onSubmit={onSubmit}>
             <input type="email" placeholder="Email" ref={emailRef} />
             <input type="password" placeholder="Password" ref={passwordRef} />

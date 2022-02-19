@@ -9,6 +9,8 @@ import { signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
 import { MyPosts } from './components/MyPosts';
 import { Search } from './components/Search';
+import { onAuthStateChanged } from "firebase/auth";
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 AOS.init();
@@ -18,7 +20,13 @@ function App() {
   const [show, setShow] = useState(false);
   console.log(show);
 
+  const [user, setUser] = useState(null);
+
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser)
+  })
 
   //::::--- LOG OUT USER ---::::
   const logOut = () => {
@@ -38,14 +46,14 @@ function App() {
         <Link to='/Home'>Home</Link>
         <div className='menu-elements' id={show ? 'active' : ''} >
           {
-            isAuth && <Link to='/createpost' onClick={() => setShow(!show)}>Añadir post</Link>
+            isAuth && <Link to='/createpost' onClick={() => setShow(!show)}>Añadir</Link>
           }
 
           {
-            isAuth && <Link to='/myposts' onClick={() => setShow(!show)}>Mis posts</Link>
+            isAuth && <Link to='/myposts' onClick={() => setShow(!show)}>Posts</Link>
           }
           {
-            isAuth && <Link to='/search' onClick={() => setShow(!show)}>Buscador</Link>
+            isAuth && <Link to='/search' onClick={() => setShow(!show)}>Buscar</Link>
           }
 
           {
@@ -54,7 +62,7 @@ function App() {
 
 
           {
-            //muestra nombre de usuario conectado  //localStorage.getItem('currentUser')
+            //muestra nombre de usuario conectado  //auth.currentUser.displayName   localStorage.getItem('currentUser')
             isAuth ? <span> User: {auth.currentUser.displayName}</span> : ''
           }
         </div>

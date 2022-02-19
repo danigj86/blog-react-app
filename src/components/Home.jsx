@@ -25,16 +25,9 @@ export const Home = ({ isAuth }) => {
         getPosts();
     }, []);
 
-    //borrar un documento (un post en este caso)
-    const deletePost = async (id) => {
-        //primero hacemos referencia al documento en concreto que deseamos
-        //borrar, especificando los tres parametros (configuracionDB, nombre DB, id del documento a borrar)
-        const postDoc = doc(db, 'posts', id)
-        //y se borra con deleteDoc
-        await deleteDoc(postDoc);
-        //navigate('/createpost');
-        getPosts();
-    }
+    const postListFinal = postList.slice(postList.length-3 , postList.length)
+
+
     return (
         <div className="homePage">
 
@@ -45,7 +38,7 @@ export const Home = ({ isAuth }) => {
                 <h4>Loguéate con Google, busca, gestiona y publica posts interesantes!</h4>
             </div>
             {
-                postList.map((post) => {
+                postListFinal.map((post) => {
                     return <div data-aos="zoom-in" className="post" key={post.id}>
                         <div className="postHeader">
                             {
