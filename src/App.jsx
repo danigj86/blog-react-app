@@ -11,22 +11,28 @@ import { MyPosts } from './components/MyPosts';
 import { Search } from './components/Search';
 import { onAuthStateChanged } from "firebase/auth";
 
+
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useUserContext } from './context/userContext';
 AOS.init();
 
 function App() {
+
+  const { user, logoutUser } = useUserContext();
+  
   //toogle para mobile menu
   const [show, setShow] = useState(false);
   console.log(show);
 
-  const [user, setUser] = useState(null);
-
+/*   const { user, error, loading } = useUserContext();
+ */
   const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
 
-  onAuthStateChanged(auth, (currentUser) => {
+/*   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser)
-  })
+  }) */
 
   //::::--- LOG OUT USER ---::::
   const logOut = () => {
@@ -63,7 +69,7 @@ function App() {
 
           {
             //muestra nombre de usuario conectado  //auth.currentUser.displayName   localStorage.getItem('currentUser')
-            isAuth ? <span> User: {auth.currentUser.displayName}</span> : ''
+            isAuth ? <span> User: {/* user.displayName */}</span> : ''
           }
         </div>
 

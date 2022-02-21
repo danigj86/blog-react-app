@@ -2,11 +2,13 @@ import React, { useRef, useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { auth, provider } from '../firebase-config'
+import { useUserContext } from '../context/userContext';
 
 
 
 export const SignIn = ({ setIsAuth }) => {
 
+    const { signInUser, forgotPassword } = useUserContext();
 
     let navigate = useNavigate();
 
@@ -15,12 +17,8 @@ export const SignIn = ({ setIsAuth }) => {
 
     const [error, setError] = useState("")
   
-    /*     if (error === 'auth/user-not-found'){
-            setErrorMsg('Usuario no encontrado')
-        }else if(error === 'auth/wrong-password'){
-            setErrorMsg('Password incorrecto')
-        } */
-
+    
+/* 
     const onSubmit = async (e) => {
         e.preventDefault();
         const email = emailRef.current.value;
@@ -42,12 +40,20 @@ export const SignIn = ({ setIsAuth }) => {
                 setError(err.code)
             }
 
-            /*  setIsAuth(true);
-             navigate('/', {
-                 replace: true
-             }); */
         } else {
             alert("Introducuce tus datos");
+        }
+
+    } */
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+
+        if (email && password){
+            signInUser(email, password)
+        }else{
+            alert('Introduce tus datos')
         }
 
     }

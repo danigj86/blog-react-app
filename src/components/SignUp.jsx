@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import { auth, provider } from '../firebase-config'
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../context/userContext';
+
 
 export const SignUp = ({ setIsAuth }) => {
 
@@ -13,10 +15,20 @@ export const SignUp = ({ setIsAuth }) => {
 
     const [error, setError] = useState("")
 
-
-    // const { registerUser } = useUserContext()
+    const { registerUser } = useUserContext()
 
     const onSubmit = (e) => {
+        e.preventDefault();
+        const email = emailRef.current.value;
+        const name = nameRef.current.value;
+        const password = passwordRef.current.value;
+
+        if (email && name && password) registerUser(email, password, name);
+       
+      };
+  
+
+   /*  const onSubmit = (e) => {
         e.preventDefault();
         const email = emailRef.current.value;
         const name = nameRef.current.value;
@@ -38,7 +50,7 @@ export const SignUp = ({ setIsAuth }) => {
                 })
                 .catch((err) => setError(err.message));
         }
-    };
+    }; */
 
     return <div className="form">
         <h2> Nuevo usuario </h2>
