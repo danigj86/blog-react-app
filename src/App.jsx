@@ -63,7 +63,7 @@ function App() {
 
           {
             //muestra nombre de usuario conectado  //auth.currentUser.displayName   localStorage.getItem('currentUser')
-            isAuth ? <span> User: {auth.currentUser.displayName}</span> : ''
+            isAuth ? <span> User: {localStorage.getItem('currentUser')}</span> : ''
           }
         </div>
 

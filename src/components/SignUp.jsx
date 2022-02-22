@@ -32,6 +32,7 @@ export const SignUp = ({ setIsAuth }) => {
                 )
                 .then((res) => {
                     console.log(res);
+                    localStorage.setItem('isAuth', true);
                     setIsAuth(true);
                     localStorage.setItem('currentUser', auth.currentUser.displayName);
                     navigate('/');

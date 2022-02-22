@@ -37,6 +37,7 @@ export const Home = ({ isAuth }) => {
                 <h3>Aplicación construida con React + FireBase</h3>
                 <h4>Loguéate con Google, busca, gestiona y publica posts interesantes!</h4>
             </div>
+            
             {
                 postListFinal.map((post) => {
                     return <div data-aos="zoom-in" className="post" key={post.id}>
