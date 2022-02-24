@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore';
 import { auth, db } from '../firebase-config';
 import { Footer } from './Footer';
-import  '../footerstyle.css'
+import '../footerstyle.css'
 
 
 export const Home = ({ isAuth }) => {
 
     const [postList, setPostList] = useState([]);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     //creamos la referencia de la base de datos para recuperar los posts
@@ -18,9 +19,11 @@ export const Home = ({ isAuth }) => {
     //console.log(localStorage.getItem('idUserPost'))
     //console.log(auth.currentUser);
     const getPosts = async () => {
+        setLoading(true);
         const data = await getDocs(postCollectionRef)
         console.log(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         setPostList(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        setLoading(false)
     };
     //Al cargar este componente, se cargan los post de la BD
     useEffect(() => {
@@ -73,7 +76,18 @@ export const Home = ({ isAuth }) => {
                         </div>;
                     })
                 }
+                <div>
+                    {
+                        loading == true ? <div><div className="spinner-grow text-danger" role="status">
+                            <span className="visually-hidden"></span>
+                        </div>
+                            <div className="spinner-grow text-danger" role="status">
+                                <span className="visually-hidden"></span>
+                            </div></div> : null
+                    }
+                </div>
             </div>
+
         </>
     )
 }

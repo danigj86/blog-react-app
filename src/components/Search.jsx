@@ -10,6 +10,7 @@ export const Search = () => {
     console.log(searchText);
 
     const [postList, setPostList] = useState([]);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     //buscador
@@ -20,9 +21,11 @@ export const Search = () => {
 
     const postCollectionRef = collection(db, 'posts');
     const getPosts = async () => {
+        setLoading(true);
         const data = await getDocs(postCollectionRef)
         console.log(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         setPostList(data.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        setLoading(false)
     };
 
     useEffect(() => {
@@ -92,6 +95,14 @@ export const Search = () => {
                     </div>;
                 })
             }
+             {
+                        loading == true ? <div><div className="spinner-grow text-danger" role="status">
+                            <span className="visually-hidden"></span>
+                        </div>
+                            <div className="spinner-grow text-danger" role="status">
+                                <span className="visually-hidden"></span>
+                            </div></div> : null
+                    }
         </div>
     )
 }

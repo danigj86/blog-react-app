@@ -92,9 +92,10 @@ export const MyPosts = ({ isAuth }) => {
             <div>
                 {
                     loading == true ? <div><div className="spinner-grow text-danger" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div><div className="spinner-grow text-danger" role="status">
-                            <span className="visually-hidden">Loading...</span>
+                        <span className="visually-hidden"></span>
+                    </div>
+                        <div className="spinner-grow text-danger" role="status">
+                            <span className="visually-hidden"></span>
                         </div></div> : null
                 }
             </div>
