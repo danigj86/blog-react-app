@@ -63,7 +63,7 @@ export const Search = () => {
 
             {
                 searchPostList.map((post) => {
-                    return <div data-aos="zoom-in" className="post" key={post.id}>
+                    return <div data-aos="zoom-in" className="post animate__animated animate__fadeIn" key={post.id}>
                         <div className="postHeader">
                             {
                                 //:::::::::   TITULO POST   ::::::::::::::

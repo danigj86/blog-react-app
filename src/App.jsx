@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from "react";
 import './App.css';
+import  './footerstyle.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Home } from "./components/Home"
 import { Login } from "./components/Login"
@@ -10,10 +11,10 @@ import { auth } from "./firebase-config";
 import { MyPosts } from './components/MyPosts';
 import { Search } from './components/Search';
 import { onAuthStateChanged } from "firebase/auth";
-
-import AOS from 'aos';
+import { Footer } from './components/Footer';
+/* import AOS from 'aos';
 import 'aos/dist/aos.css';
-AOS.init();
+AOS.init(); */
 
 function App() {
   //toogle para mobile menu
@@ -81,6 +82,7 @@ function App() {
         <Route path='/' element={<Home isAuth={isAuth} />} />
         <Route path='/*' element={<Home isAuth={isAuth} />} />
       </Routes>
+      <Footer/>
     </Router>
   );
 }

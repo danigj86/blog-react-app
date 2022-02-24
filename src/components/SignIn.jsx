@@ -73,7 +73,7 @@ export const SignIn = ({ setIsAuth }) => {
             > ¿Olvidaste tu contraseña? </p>
 
             <button type="submit">Iniciar sesión</button>
-            {error && <p className="error">{error === 'auth/invalid-email'? 'Email no registrado': 'Login o usuario incorrecto'}</p>}
+            {error && <p className="error">{error === 'auth/invalid-email' ? 'Email no registrado' : 'Login o usuario incorrecto'}</p>}
         </form>
         {/* Modal */}
         <>

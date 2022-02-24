@@ -48,7 +48,7 @@ export const MyPosts = ({ isAuth }) => {
             <br /><br /><br />
             {
                 postList.map((post, index) => {
-                    return <div key={post.id}>
+                    return <div key={post.id} className="animate__animated animate__fadeIn">
                         {
                             isAuth && post.author.id === auth.currentUser.uid &&
                             <div className="post" key={post.id}>
